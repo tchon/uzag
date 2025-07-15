@@ -1,0 +1,23 @@
+{
+  "name": "uzag",
+  "version": "0.0.1",
+  "description": "A user-agent parser with zero dependencies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tchon/uzag.git"
+  },
+  "keywords": [
+    "user-agent",
+    "parse"
+  ],
+  "author": "tchon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tchon/uzag/issues"
+  },
+  "homepage": "https://github.com/tchon/uzag#readme"
+}
