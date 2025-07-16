@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { parse_os, parse_browser } from "./index.js";
+import { parseOs, parseBrowser } from "./index.js";
 
 const USER_AGENTS = {
   windows: "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
@@ -55,10 +55,10 @@ const USER_AGENTS = {
   crawler_yahoo: "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)"
 };
 
-describe("parse_os", () => {
+describe("parseOs", () => {
   it("should parse Windows", () => {
     const ua = USER_AGENTS.windows;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "Windows NT");
     assert.equal(out.osVersion, "10.0");
@@ -66,7 +66,7 @@ describe("parse_os", () => {
 
   it("should parse Macbook", () => {
     const ua = USER_AGENTS.macbook;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "Intel Mac OS X");
     assert.equal(out.osVersion, "15_5_3");
@@ -74,7 +74,7 @@ describe("parse_os", () => {
 
   it("should parse iPhone", () => {
     const ua = USER_AGENTS.iphone
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "CPU iPhone OS");
     assert.equal(out.osVersion, "18_5");
@@ -82,7 +82,7 @@ describe("parse_os", () => {
 
   it("should parse iPad", () => {
     const ua = USER_AGENTS.ipad;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "CPU iPhone OS");
     assert.equal(out.osVersion, "18_3");
@@ -90,7 +90,7 @@ describe("parse_os", () => {
 
   it("should parse Huawei", () => {
     const ua = USER_AGENTS.huawei;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "Android");
     assert.equal(out.osVersion, "12");
@@ -98,7 +98,7 @@ describe("parse_os", () => {
 
   it("should parse Samsung", () => {
     const ua = USER_AGENTS.samsung;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "Android");
     assert.equal(out.osVersion, "14");
@@ -106,7 +106,7 @@ describe("parse_os", () => {
 
   it("should parse Pixel", () => {
     const ua = USER_AGENTS.pixel;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "Android");
     assert.equal(out.osVersion, "14");
@@ -114,7 +114,7 @@ describe("parse_os", () => {
 
   it("should parse Motorola Moto Edge", () => {
     const ua = USER_AGENTS.motorola_moto_edge;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "Android");
     assert.equal(out.osVersion, "17");
@@ -122,7 +122,7 @@ describe("parse_os", () => {
 
   it("should parse Playstation", () => {
     const ua = USER_AGENTS.playstation;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "PlayStation 4");
     assert.equal(out.osVersion, "3.11");
@@ -130,7 +130,7 @@ describe("parse_os", () => {
 
   it("should parse Xbox", () => {
     const ua = USER_AGENTS.xbox;
-    const out = parse_os(ua);
+    const out = parseOs(ua);
 
     assert.equal(out.os, "Windows NT");
     assert.equal(out.osVersion, "10.0");
@@ -138,10 +138,10 @@ describe("parse_os", () => {
 });
 
 
-describe("parse_browser", () => {
+describe("parseBrowser", () => {
   it("should parse Safari on Desktop", () => {
     const ua = USER_AGENTS.safari_desktop;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Safari");
     assert.equal(out.browserVersion, "7.0.3");
@@ -149,7 +149,7 @@ describe("parse_browser", () => {
 
   it("should parse Safari on iPhone", () => {
     const ua = USER_AGENTS.safari_iphone;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Mobile/15E148 Safari");
     assert.equal(out.browserVersion, "14.0");
@@ -157,7 +157,7 @@ describe("parse_browser", () => {
 
   it("should parse Safari on iPad", () => {
     const ua = USER_AGENTS.safari_ipad;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Mobile/15E148 Safari");
     assert.equal(out.browserVersion, "14.0");
@@ -165,7 +165,7 @@ describe("parse_browser", () => {
 
   it("should parse Firefox on Desktop", () => {
     const ua = USER_AGENTS.firefox_desktop;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Firefox");
     assert.equal(out.browserVersion, "84.0");
@@ -173,7 +173,7 @@ describe("parse_browser", () => {
 
   it("should parse Firefox on iPhone", () => {
     const ua = USER_AGENTS.firefox_iphone;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "FxiOS");
     assert.equal(out.browserVersion, "30.0");
@@ -181,7 +181,7 @@ describe("parse_browser", () => {
 
   it("should parse Firefox on Android", () => {
     const ua = USER_AGENTS.firefox_android;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Firefox");
     assert.equal(out.browserVersion, "84.0");
@@ -189,7 +189,7 @@ describe("parse_browser", () => {
 
   it("should parse Edge on Desktop", () => {
     const ua = USER_AGENTS.edge_desktop;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Edg");
     assert.equal(out.browserVersion, "114.0.1823.67");
@@ -197,7 +197,7 @@ describe("parse_browser", () => {
 
   it("should parse Edge on iOS", () => {
     const ua = USER_AGENTS.edge_ios;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "EdgiOS");
     assert.equal(out.browserVersion, "138.3351.83");
@@ -205,7 +205,7 @@ describe("parse_browser", () => {
 
   it("should parse Edge on Android", () => {
     const ua = USER_AGENTS.edge_android;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "EdgA");
     assert.equal(out.browserVersion, "138.0.3351.77");
@@ -213,7 +213,7 @@ describe("parse_browser", () => {
 
   it("should parse Opera on Desktop", () => {
     const ua = USER_AGENTS.edge_desktop;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Edg");
     assert.equal(out.browserVersion, "114.0.1823.67");
@@ -221,7 +221,7 @@ describe("parse_browser", () => {
 
   it("should parse Opera on Windows", () => {
     const ua = USER_AGENTS.opera_windows;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "OPR");
     assert.equal(out.browserVersion, "73.0.3856.329");
@@ -229,7 +229,7 @@ describe("parse_browser", () => {
 
   it("should parse Opera on Mac", () => {
     const ua = USER_AGENTS.opera_mac;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "OPR");
     assert.equal(out.browserVersion, "73.0.3856.329");
@@ -237,7 +237,7 @@ describe("parse_browser", () => {
 
   it("should parse Opera on Linux", () => {
     const ua = USER_AGENTS.opera_linux;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "OPR");
     assert.equal(out.browserVersion, "73.0.3856.329");
@@ -245,7 +245,7 @@ describe("parse_browser", () => {
 
   it("should parse Opera on Android", () => {
     const ua = USER_AGENTS.opera_android;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "OPR");
     assert.equal(out.browserVersion, "61.1.3076.56625");
@@ -253,7 +253,7 @@ describe("parse_browser", () => {
 
   it("should parse Vivaldi on Windows", () => {
     const ua = USER_AGENTS.vivaldi_windows;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Vivaldi");
     assert.equal(out.browserVersion, "3.5");
@@ -261,7 +261,7 @@ describe("parse_browser", () => {
 
   it("should parse Vivaldi on Mac", () => {
     const ua = USER_AGENTS.vivaldi_mac;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Vivaldi");
     assert.equal(out.browserVersion, "3.5");
@@ -269,7 +269,7 @@ describe("parse_browser", () => {
 
   it("should parse Vivaldi on Linux", () => {
     const ua = USER_AGENTS.vivaldi_linux;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Vivaldi");
     assert.equal(out.browserVersion, "3.5");
@@ -277,7 +277,7 @@ describe("parse_browser", () => {
 
   it("should parse Yandex on Windows", () => {
     const ua = USER_AGENTS.yandex_windows;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "YaBrowser");
     assert.equal(out.browserVersion, "20.12.0");
@@ -285,7 +285,7 @@ describe("parse_browser", () => {
 
   it("should parse Yandex on Mac", () => {
     const ua = USER_AGENTS.yandex_mac;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "YaBrowser");
     assert.equal(out.browserVersion, "20.12.0");
@@ -293,7 +293,7 @@ describe("parse_browser", () => {
 
   it("should parse Yandex on Linux", () => {
     const ua = USER_AGENTS.yandex_linux;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "YaBrowser");
     assert.equal(out.browserVersion, "20.12.29.180");
@@ -301,7 +301,7 @@ describe("parse_browser", () => {
 
   it("should parse Yandex on iPhone", () => {
     const ua = USER_AGENTS.yandex_iphone;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "YaBrowser");
     assert.equal(out.browserVersion, "20.11.2.199");
@@ -309,7 +309,7 @@ describe("parse_browser", () => {
 
   it("should parse Chrome on ChromeOS", () => {
     const ua = USER_AGENTS.chrome_chromeos;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Chrome");
     assert.equal(out.browserVersion, "87.0.4280.88");
@@ -317,7 +317,7 @@ describe("parse_browser", () => {
 
   it("should parse Chrome on Windows", () => {
     const ua = USER_AGENTS.chrome_windows;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Chrome");
     assert.equal(out.browserVersion, "87.0.4280.88");
@@ -325,7 +325,7 @@ describe("parse_browser", () => {
 
   it("should parse Chrome on Mac", () => {
     const ua = USER_AGENTS.chrome_mac;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Chrome");
     assert.equal(out.browserVersion, "87.0.4280.88");
@@ -333,7 +333,7 @@ describe("parse_browser", () => {
 
   it("should parse Chrome on Linux", () => {
     const ua = USER_AGENTS.chrome_linux;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Chrome");
     assert.equal(out.browserVersion, "87.0.4280.88");
@@ -341,7 +341,7 @@ describe("parse_browser", () => {
 
   it("should parse Chrome on iPhone", () => {
     const ua = USER_AGENTS.chrome_iphone;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "CriOS");
     assert.equal(out.browserVersion, "87.0.4280.77");
@@ -349,7 +349,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for GPT", () => {
     const ua = USER_AGENTS.crawler_gpt;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "GPTBot");
     assert.equal(out.browserVersion, "1.1");
@@ -357,7 +357,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for OpenAI", () => {
     const ua = USER_AGENTS.crawler_oai;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "ChatGPT-User");
     assert.equal(out.browserVersion, "2.0");
@@ -365,7 +365,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Anthropic", () => {
     const ua = USER_AGENTS.crawler_anthropic;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "ClaudeBot");
     assert.equal(out.browserVersion, "1.0");
@@ -373,7 +373,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Perplexity", () => {
     const ua = USER_AGENTS.crawler_perplexity;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "PerplexityBot");
     assert.equal(out.browserVersion, "1.0");
@@ -381,7 +381,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for GoogleBot", () => {
     const ua = USER_AGENTS.crawler_google;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Google-Extended");
     assert.equal(out.browserVersion, "1.0");
@@ -389,7 +389,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Bing", () => {
     const ua = USER_AGENTS.crawler_bing;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "BingBot");
     assert.equal(out.browserVersion, "1.0");
@@ -397,7 +397,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Amazon", () => {
     const ua = USER_AGENTS.crawler_amazon;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Amazonbot");
     assert.equal(out.browserVersion, "0.1");
@@ -405,7 +405,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Apple", () => {
     const ua = USER_AGENTS.crawler_apple;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Applebot-Extended");
     assert.equal(out.browserVersion, "1.0");
@@ -413,7 +413,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Facebook", () => {
     const ua = USER_AGENTS.crawler_fb;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "FacebookBot");
     assert.equal(out.browserVersion, "1.0");
@@ -421,7 +421,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Meta", () => {
     const ua = USER_AGENTS.crawler_meta;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "meta-externalagent");
     assert.equal(out.browserVersion, "1.1");
@@ -429,7 +429,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Cohere", () => {
     const ua = USER_AGENTS.crawler_cohere;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "cohere-ai");
     assert.equal(out.browserVersion, "1.0");
@@ -437,7 +437,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Mistral", () => {
     const ua = USER_AGENTS.crawler_mistral;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "MistralAI-User");
     assert.equal(out.browserVersion, "1.0");
@@ -445,7 +445,7 @@ describe("parse_browser", () => {
 
   it("should parse Crawler for Yahoo Slurp", () => {
     const ua = USER_AGENTS.crawler_yahoo;
-    const out = parse_browser(ua);
+    const out = parseBrowser(ua);
 
     assert.equal(out.browserName, "Yahoo! Slurp");
   });

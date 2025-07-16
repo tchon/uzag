@@ -7,9 +7,9 @@ const REGX_CLIENT = {
   CRAWLER: /compatible\W+(?<browserName>\w[^\/\)]+)(?:;|\/(?<browserVersion>\d[\d\._]+))/i,
 };
 
-export function parse_os(user_agent) {
-  if (typeof user_agent === "string") {
-    const matches = user_agent.match(REGX_OS);
+function parseOs(userAgent) {
+  if (typeof userAgent === "string") {
+    const matches = userAgent.match(REGX_OS);
     if (matches) {
       return { os: matches[1], osVersion: matches[2] };
     }
@@ -17,12 +17,12 @@ export function parse_os(user_agent) {
   return { os: "unknown", osVersion: "unknown" };
 }
 
-export function parse_browser(user_agent) {
-  if (typeof user_agent === "string") {
+function parseBrowser(userAgent) {
+  if (typeof userAgent === "string") {
     const clients = Object.keys(REGX_CLIENT);
     for (let i = 0; i < clients.length; i++) {
       const client = clients[i];
-      const match = REGX_CLIENT[client].exec(user_agent);
+      const match = REGX_CLIENT[client].exec(userAgent);
       if (match) {
         const { browserName, browserVersion } = match.groups;
         return { browserName, browserVersion };
@@ -32,3 +32,5 @@ export function parse_browser(user_agent) {
   }
   return { browserName: "unknown", browserVersion: "unknown" };
 }
+
+module.exports = { parseOs, parseBrowser }
